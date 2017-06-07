@@ -1,5 +1,11 @@
+# For hosting on Heroku
 require 'rack'
 require 'rack/contrib/try_static'
+
+# "restrict" access for now
+use Rack::Auth::Basic, "Restricted Area" do |username, password|
+  [username, password] == [ENV['AUTH_USERNAME'], ENV['AUTH_PASSWORD']]
+end
 
 # Serve files from the build directory
 use Rack::TryStatic,
@@ -7,7 +13,6 @@ use Rack::TryStatic,
   urls: %w[/],
   try: ['.html', 'index.html', '/index.html']
 
-run lambda{ |env|
-  four_oh_four_page = File.expand_path("../build/404/index.html", __FILE__)
-  [ 404, { 'Content-Type'  => 'text/html'}, [ File.read(four_oh_four_page) ]]
+run lambda { |_env|
+  [404, { 'Content-Type' => 'text/html' }, ["404 Not Found"]]
 }
