@@ -3,16 +3,13 @@ host: local-service-patterns
 
 # Header-related options
 show_govuk_logo: true
-service_name: Local government service patterns
-service_link: https://www.larry-the-cat.service.gov.uk
+service_name: Local government service toolkit
+service_link: /
 phase: Alpha
 
 # Links to show on right-hand-side of header
 header_links:
-  About: https://www.larry-the-cat.service.gov.uk
-  Get Started: https://www.larry-the-cat.service.gov.uk/get-started
-  Documentation: /
-  Support: https://www.larry-the-cat.service.gov.uk/support
+  About: /
 
 # Tracking ID from Google Analytics (e.g. UA-XXXX-Y)
 ga_tracking_id:
